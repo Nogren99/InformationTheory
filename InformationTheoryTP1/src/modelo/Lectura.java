@@ -19,6 +19,9 @@ public class Lectura {
         matriz = new int[][]{{0, 0, 0}, {0, 0, 0}, {0, 0, 0}};
     }
 
+    public int[][] getMatriz() {
+        return matriz;
+    }
 
     public void leeArch() throws noSePudoLeerException {
         FileReader fr;
