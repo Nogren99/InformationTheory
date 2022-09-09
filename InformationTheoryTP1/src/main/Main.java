@@ -18,5 +18,6 @@ public class Main {
         lectura.muestraMatriz();
         System.out.println("------------");
         calculos.totalColumna(lectura.getMatriz());
+        calculos.muestraMatriz();
     }
 }

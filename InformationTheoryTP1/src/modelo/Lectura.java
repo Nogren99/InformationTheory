@@ -37,18 +37,19 @@ public class Lectura {
                 c1=c2;
                 c2 = (char) fr.read();
                 i++;
-                System.out.println(i);
             }
 
         } catch (Exception ex) {
-            throw new noSePudoLeerException("no se puede leer");
+            throw new noSePudoLeerException("Error al leer");
         }
     }
 
     public void muestraMatriz(){
+        System.out.println("Matriz de apariciones condicionadas:");
         for(int i=0;i<3;i++){
+            System.out.print("|");
             for(int j=0;j<3;j++){
-                System.out.print(matriz[i][j]+" ");
+                System.out.print(" "+matriz[i][j]+" | ");
             }
             System.out.println();
         }
