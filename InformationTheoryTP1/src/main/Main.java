@@ -19,5 +19,9 @@ public class Main {
         System.out.println("------------");
         calculos.totalColumna(lectura.getMatriz());
         calculos.muestraMatriz();
+        calculos.memoriaNula();
+
+
+
     }
 }
