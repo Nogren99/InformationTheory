@@ -29,7 +29,7 @@ public class Lectura {
         int i=0;
 
         try {
-            fr = new FileReader("InformationTheoryTP1/src/assets/datos.txt");
+            fr = new FileReader("src/assets/datos.txt");
             c1 = (char) fr.read();
             c2 = (char) fr.read();
             while(i<9999) {
@@ -38,7 +38,6 @@ public class Lectura {
                 c2 = (char) fr.read();
                 i++;
             }
-
         } catch (Exception ex) {
             throw new noSePudoLeerException("Error al leer");
         }

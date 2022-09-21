@@ -20,7 +20,7 @@ public class Main {
         calculos.totalColumna(lectura.getMatriz());
         calculos.muestraMatriz();
         calculos.memoriaNula();
-
+        calculos.generaExtension();
 
 
     }
