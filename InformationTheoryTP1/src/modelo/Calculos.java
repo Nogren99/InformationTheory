@@ -186,7 +186,30 @@ public class Calculos {
     }
 
     public boolean isCompacto(){
-        return true;
+
+        Map <String, Register> codigo = Lectura.getInstance().getCodigo();
+        ArrayList<String> indice = Lectura.getInstance().getIndice();
+        int i=0 ,n = Lectura.getInstance().getIndice().size();
+        int r = Lectura.getInstance().alfabeto.size();
+        boolean compacto = true;
+
+        double probabilidad, alpha = 0.0;
+
+        while (compacto == true && i<n){
+        //for (int i=0; i<n;i++){
+            probabilidad = codigo.get(indice.get(i)).getProb();
+            System.out.println("prob"+probabilidad);
+            //alpha = Math.log10(probabilidad - (double) 1/r);
+            alpha = Math.log10(probabilidad)/Math.log10((double) 1/r);   // probar cambiando la base, algo como 1/10000 para encontrar un alpha entero
+            alpha = alpha;
+            if(alpha - 5 < 0){
+                compacto = false;
+            }
+            //System.out.println("alpha "+codigo.get(indice.get(i)).getFrec()+" "+ alpha);
+            i++;
+        }
+
+        return compacto;
     }
 
 }
