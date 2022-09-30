@@ -133,34 +133,26 @@ public class Calculos {
     }
 
     public void calculaCantInfo(String vec[], double vecProb[]){
-        double cantInfo = 0, entropia = 0, probabilidad = 0;
-        int n=vec[i].length();
+        double cantInfo = 0, entropia = 0, probabilidad;
+        int n=vec[0].length();
+        //System.out.println(n);
         char car;
         for (int i=0; i<vec.length; i++){
-            for (int j=0; j<n; j++){
-                car = vec[i].charAt(j);
-                probabilidad *= vecProb[lectura.alfabeto.get(car)];
-                entropia += probabilidad*( Math.log10(1/probabilidad) / Math.log10(n));
-                cantInfo += Math.log10(1/probabilidad) / Math.log10(n);
+            car = vec[i].charAt(0); //voy leyendo cada caracter de cada posicion del vector. Por ej si tengo CBA, lee primero la C, desp la B y así
+            probabilidad = vecProb[lectura.alfabeto.get(car)];
+            for (int j=1; j<n; j++){
+                car = vec[i].charAt(j); //voy leyendo cada caracter de cada posicion del vector. Por ej si tengo CBA, lee primero la C, desp la B y así
+                probabilidad = probabilidad*vecProb[lectura.alfabeto.get(car)];
+                //System.out.println(vecProb[lectura.alfabeto.get(car)]);
             }
+            //System.out.println(probabilidad);
+            entropia += probabilidad*( Math.log10(1/probabilidad) / Math.log10(n));
+            cantInfo += Math.log10(1/probabilidad) / Math.log10(n);
         }
+        System.out.println("Entropia 2a: " +entropia);
+        System.out.println("CantInfo 2a: " +cantInfo);
     }
-   /* public void escribeArch (String linea){
-        try {
-            String ruta = "/ruta/filename.txt";
-            File file = new File(ruta);
-            // Si el archivo no existe es creado
-            if (!file.exists()) {
-                file.createNewFile();
-            }
-            FileWriter fw = new FileWriter(file);
-            BufferedWriter bw = new BufferedWriter(fw);
-            bw.write(linea);
-            bw.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }*/
+
 }
 
 
