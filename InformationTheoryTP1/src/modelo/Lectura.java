@@ -3,16 +3,52 @@ package modelo;
 import Exepciones.noSePudoLeerException;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+class Register{
+    String mensaje="";
+    int frec=0;
+
+    public Register(String mensaje, int frec) {
+        this.mensaje = mensaje;
+        this.frec = frec;
+    }
+
+    public String getMensaje() {
+        return mensaje;
+    }
+
+    public void setMensaje(String mensaje) {
+        this.mensaje = mensaje;
+    }
+
+    public int getFrec() {
+        return frec;
+    }
+
+    public void setFrec(int frec) {
+        this.frec = frec;
+    }
+
+    @Override
+    public String toString() {
+        return mensaje +" --> " + frec;
+    }
+}
 public class Lectura {
 
     public int matriz[][] = new int[][]{{0, 0, 0}, {0, 0, 0}, {0, 0, 0}};
     private static Lectura instance = null;
     public Map <Character, Integer> alfabeto = new HashMap<Character, Integer>();
     public double vecProb[] = new double[27];
+
     public String vec[];
+
+    //public ArrayList<Register> array = new ArrayList<Register>();
+    public Map <String, Register> codigo = new HashMap<String, Register>();
     public Lectura() {
     }
 
@@ -84,7 +120,7 @@ public class Lectura {
             }
             for (i=0;i<alfabeto.size();i++){
                 this.vecProb[i]/= 10000;
-                //System.out.println(i+" --> " + this.vecProb[i]);
+                System.out.println(i+" --> " + this.vecProb[i]);
             }
         } catch (Exception ex) {
             throw new noSePudoLeerException("Error al leer");
@@ -94,20 +130,27 @@ public class Lectura {
     public void separaTexto (int n){
         File doc = new File("src/assets/datos.txt");
         String mensaje="", str;
-        //int i1 = 3334;
-
-        this.vec = new String[(int)10000/n];
+        int frec = 0;
         int j=0;
+        this.vec = new String[];
+        Register actual;
+
         try {
             BufferedReader obj = new BufferedReader(new FileReader(doc));
             while ((str = obj.readLine()) != null)
                 mensaje += str;
-            //System.out.println(mensaje.substring(j,j+2));
-            for (int i=0; i<vec.length; i++) {
-                vec[i] = mensaje.substring(j, j + n);
+
+            while (j<10000) {
+                if(!codigo.containsKey(mensaje.substring(j, j + n))){
+                    codigo.put(mensaje.substring(j, j + n), new Register(mensaje.substring(j, j + n), 1));
+                }
+                else {
+                    actual=codigo.get(mensaje.substring(j, j + n));
+                    actual.setFrec(actual.getFrec()+1);
+                }
                 j += n;
-                //System.out.println(vec[i]);
             }
+            System.out.println(codigo.toString());
         }
         catch (FileNotFoundException e) {
             throw new RuntimeException(e);
@@ -120,9 +163,6 @@ public class Lectura {
         return vecProb;
     }
 
-    public String[] getVec() {
-        return vec;
-    }
 
     /*
 aparece a
