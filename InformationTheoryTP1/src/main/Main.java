@@ -26,5 +26,6 @@ public class Main {
         lectura.separaTexto(5);
         calculos.calculaCantInfo();
         System.out.println("Longitud Media: "+calculos.longitudMedia());
+        System.out.println("Cambio cualquiera");
     }
 }
