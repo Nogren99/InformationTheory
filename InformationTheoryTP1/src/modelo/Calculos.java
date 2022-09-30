@@ -1,9 +1,11 @@
 package modelo;
 import modelo.Lectura;
+import java.util.Arrays;
 
 public class Calculos {
 
     public float matProbabilidades[][];
+    public Lectura lectura = new Lectura();
 
     public Calculos() {
         this.matProbabilidades = new float[3][3];
@@ -48,7 +50,7 @@ public class Calculos {
         boolean bandera=true;
         
         while( i<=2 && bandera){
-            promFila= (matProbabilidades[i][0]+matProbabilidades[i][1]+matProbabilidades[i][2] ) / 3;
+            promFila = (matProbabilidades[i][0]+matProbabilidades[i][1]+matProbabilidades[i][2] ) / 3;
             while( j<=2 && bandera){
                 if( Math.abs(matProbabilidades[i][j]-promFila)>=0.03  )
                     bandera=false;
@@ -56,14 +58,19 @@ public class Calculos {
             }
             i++;
         }
-        if(bandera)
+        if(bandera){
             System.out.println("MEMORIA NULA : SIMBOLOS ESTADISTICAMENTE INDEPENDIENTE");
+            //llamar al que genera la extension y calcula la entropia
+        }
+
         else
             System.out.println("NO NULA");
     }
 
-    public void generaExtension(){
+    public void generaExtension(double vecProb[]){
         String linea="";
+        double entropia = 0;
+       // double vecProb[] = lectura.getVecProb();
         //char linea[] = new char[];
         char vec[] = new char[]{'A', 'B', 'C'};
         for (int a = 0; a < 3; a++){
@@ -86,9 +93,8 @@ public class Calculos {
                                                                             for (int r = 0; r < 3; r++){
                                                                                 for (int s = 0; s < 3; s++){
                                                                                     for (int t = 0; t < 3; t++){
-
+                                                                                        entropia += vecProb[a]*( Math.log10(1/vecProb[a]) / Math.log10(3))*vecProb[b]*( Math.log10(1/vecProb[b]) / Math.log10(3))*vecProb[c]*( Math.log10(1/vecProb[c]) / Math.log10(3))*vecProb[d]*( Math.log10(1/vecProb[d]) / Math.log10(3))*vecProb[e]*( Math.log10(1/vecProb[e]) / Math.log10(3))*vecProb[f]*( Math.log10(1/vecProb[f]) / Math.log10(3))*vecProb[g]*( Math.log10(1/vecProb[g]) / Math.log10(3))*vecProb[h]*( Math.log10(1/vecProb[h]) / Math.log10(3))*vecProb[i]*( Math.log10(1/vecProb[i]) / Math.log10(3))*vecProb[j]*( Math.log10(1/vecProb[j]) / Math.log10(3))*vecProb[k]*( Math.log10(1/vecProb[k]) / Math.log10(3))*vecProb[l]*( Math.log10(1/vecProb[l]) / Math.log10(3))*vecProb[m]*( Math.log10(1/vecProb[m]) / Math.log10(3))*vecProb[n]*( Math.log10(1/vecProb[n]) / Math.log10(3))*vecProb[o]*( Math.log10(1/vecProb[o]) / Math.log10(3))*vecProb[p]*( Math.log10(1/vecProb[p]) / Math.log10(3))*vecProb[q]*( Math.log10(1/vecProb[q]) / Math.log10(3))*vecProb[r]*( Math.log10(1/vecProb[r]) / Math.log10(3))*vecProb[s]*( Math.log10(1/vecProb[s]) / Math.log10(3))*vecProb[t]*( Math.log10(1/vecProb[t]) / Math.log10(3));
                                                                                         linea += "|| "+vec[a]+vec[b]+vec[c]+vec[d]+vec[e]+vec[f]+vec[g]+vec[h]+vec[i]+vec[j]+vec[k]+vec[l]+vec[m]+vec[n]+vec[o]+vec[p]+vec[q]+vec[r]+vec[s]+vec[t]+"|| ";
-                                                                                        System.out.println(linea);
                                                                                     }
                                                                                 }
                                                                             }
@@ -109,8 +115,20 @@ public class Calculos {
                 }
             }
         }
+        System.out.println("Entropia extension orden 20: "+entropia);
     }
 
+    public double entropiaFuente (double[] vecProb){
+        double entropia=0;
+        //lectura.calculaProb();
+       // double[] vecProb = lectura.getVecProb();
+        for (int i=0; i<3; i++){
+            //System.out.println(vecProb[i]);
+            entropia += vecProb[i]*( Math.log10(1/vecProb[i]) / Math.log10(3));
+        }
+        System.out.println("Entropia extension orden 20 por popiedad: "+entropia*20);
+        return entropia;
+    }
    /* public void escribeArch (String linea){
         try {
             String ruta = "/ruta/filename.txt";

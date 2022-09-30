@@ -20,8 +20,10 @@ public class Main {
         calculos.totalColumna(lectura.getMatriz());
         calculos.muestraMatriz();
         calculos.memoriaNula();
-        calculos.generaExtension();
-
-
+        lectura.calculaProb();
+        lectura.separaTexto(5);
+        //calculos.generaExtension(lectura.getVecProb());
+        System.out.println(calculos.entropiaFuente(lectura.getVecProb()));
+        //System.out.println(Math.log10(1/0.1089) / Math.log10(3));
     }
 }

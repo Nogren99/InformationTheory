@@ -67,4 +67,11 @@ public class Huffman {
         }
         construct(root, "");
     }
+    /*1. Cree un nodo de hoja para cada personaje y agréguelo a la cola de prioridad.
+    2. Mientras haya más de un nodo en la queue:
+
+        Quite los dos nodos de la prioridad más alta (la frecuencia más baja) de la queue.
+        Cree un nuevo nodo interno con estos dos nodos como hijos y una frecuencia igual a la suma de las frecuencias de ambos nodos.
+        Agregue el nuevo nodo a la cola de prioridad.
+     3. El nodo restante es el nodo raíz y el árbol está completo.*/
 }
