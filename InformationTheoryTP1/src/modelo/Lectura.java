@@ -11,6 +11,7 @@ import java.util.Map;
 class Register{
     String mensaje="";
     int frec=0;
+    double prob = 0.0;
 
     public Register(String mensaje, int frec) {
         this.mensaje = mensaje;
@@ -33,6 +34,14 @@ class Register{
         this.frec = frec;
     }
 
+    public double getProb() {
+        return prob;
+    }
+
+    public void setProb(double prob) {
+        this.prob = prob;
+    }
+
     @Override
     public String toString() {
         return mensaje +" --> " + frec;
@@ -45,10 +54,13 @@ public class Lectura {
     public Map <Character, Integer> alfabeto = new HashMap<Character, Integer>();
     public double vecProb[] = new double[27];
 
-    public String vec[];
+    //public String vec[];
 
     //public ArrayList<Register> array = new ArrayList<Register>();
+
+    public ArrayList<String> indice = new ArrayList<String>();
     public Map <String, Register> codigo = new HashMap<String, Register>();
+
     public Lectura() {
     }
 
@@ -58,6 +70,14 @@ public class Lectura {
 
     public Map<Character, Integer> getAlfabeto() {
         return alfabeto;
+    }
+
+    public Map<String, Register> getCodigo() {
+        return codigo;
+    }
+
+    public ArrayList<String> getIndice() {
+        return indice;
     }
 
     public static Lectura getInstance() {
@@ -128,24 +148,28 @@ public class Lectura {
     }
 
     public void separaTexto (int n){
+
         File doc = new File("src/assets/datos.txt");
-        String mensaje="", str;
+        String mensaje="", str,simbolo;
         int frec = 0;
         int j=0;
-        this.vec = new String[];
+        //this.vec = new String[];
         Register actual;
 
         try {
             BufferedReader obj = new BufferedReader(new FileReader(doc));
+
             while ((str = obj.readLine()) != null)
                 mensaje += str;
 
             while (j<10000) {
-                if(!codigo.containsKey(mensaje.substring(j, j + n))){
-                    codigo.put(mensaje.substring(j, j + n), new Register(mensaje.substring(j, j + n), 1));
+                simbolo = mensaje.substring(j, j + n);
+                if(!codigo.containsKey(simbolo)){
+                    indice.add(simbolo);
+                    codigo.put(simbolo, new Register(simbolo, 1));
                 }
                 else {
-                    actual=codigo.get(mensaje.substring(j, j + n));
+                    actual=codigo.get(simbolo);
                     actual.setFrec(actual.getFrec()+1);
                 }
                 j += n;

@@ -24,7 +24,7 @@ public class Main {
         calculos.muestraMatriz();
         calculos.memoriaNula();
         lectura.separaTexto(5);
-        //calculos.calculaCantInfo();
-        //System.out.println("Longitud Media: "+calculos.longitudMedia());
+        calculos.calculaCantInfo();
+        System.out.println("Longitud Media: "+calculos.longitudMedia());
     }
 }

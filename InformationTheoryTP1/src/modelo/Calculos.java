@@ -1,6 +1,10 @@
 package modelo;
 import Exepciones.noSePudoLeerException;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 public class Calculos {
 
     public float matProbabilidades[][];
@@ -139,60 +143,54 @@ public class Calculos {
     }
 
     public void calculaCantInfo(){
-        String vec[]=Lectura.getInstance().getVec();
-        double vecProb[]=Lectura.getInstance().getVecProb();
+
+        Map <String, Register> codigo = Lectura.getInstance().getCodigo();
+        ArrayList<String> indice = Lectura.getInstance().getIndice();
+
         double cantInfo = 0, entropia = 0, probabilidad;
-        int longitud = 0;;
-        //System.out.println(n);
-        char car;
-        for (int i=0; i<vec.length; i++){
-            car = vec[i].charAt(0); //voy leyendo cada caracter de cada posicion del vector. Por ej si tengo CBA, lee primero la C, desp la B y así
-            probabilidad = vecProb[Lectura.getInstance().getAlfabeto().get(car)];
-            longitud=vec[i].length();
-            for (int j=1; j<longitud; j++){
-                car = vec[i].charAt(j); //voy leyendo cada caracter de cada posicion del vector. Por ej si tengo CBA, lee primero la C, desp la B y así
-                probabilidad = probabilidad*vecProb[Lectura.getInstance().getAlfabeto().get(car)];
-            }
-            entropia += probabilidad*( Math.log10(1/probabilidad) / Math.log10(3));
-            cantInfo += Math.log10(1/probabilidad) / Math.log10(3);
+        double frectotal = 0;
+        int n = Lectura.getInstance().getIndice().size();
+
+        for (int i=0; i<n;i++){
+            frectotal += codigo.get(indice.get(i)).getFrec();
         }
+
+        for (int i=0; i<n;i++){
+            codigo.get(indice.get(i)).setProb((double) codigo.get(indice.get(i)).getFrec()/frectotal);
+            probabilidad = codigo.get(indice.get(i)).getProb();
+            cantInfo += Math.log10(1/probabilidad) / Math.log10(3);
+            entropia += probabilidad*( Math.log10(1/probabilidad) / Math.log10(3));
+        }
+
         System.out.println("Entropia 2a: " +entropia);
         System.out.println("CantInfo 2a: " +cantInfo);
+
     }
 
-  /*  public double longitudMedia (){
-        double probabilidad=0, resp=0;
-        int longitud =0, j;
-        String vec[]=Lectura.getInstance().getVec();
-        double vecProb[]=Lectura.getInstance().getVecProb();
-        char car;
-        for (int i=0; i<vec.length; i++){
-            car = vec[i].charAt(0); //voy leyendo cada caracter de cada posicion del vector. Por ej si tengo CBA, lee primero la C, desp la B y así
-            probabilidad = vecProb[Lectura.getInstance().getAlfabeto().get(car)];
-            longitud=vec[i].length();
-            //System.out.println(longitud);
-            for (j=1; j<longitud; j++){
-                car = vec[i].charAt(j); //voy leyendo cada caracter de cada posicion del vector. Por ej si tengo CBA, lee primero la C, desp la B y así
-                probabilidad = probabilidad*vecProb[Lectura.getInstance().getAlfabeto().get(car)];
-            }
-            resp += longitud*probabilidad;
-            //System.out.println(probabilidad);
-        }
-        return resp;
-    }*/
+    public double longitudMedia (){
 
-    /*public void longMedia (){
-        double probabilidad=0, resp=0;
-        int longitud =0, j;
-        String vec[]=Lectura.getInstance().getVec();
-        double vecProb[]=Lectura.getInstance().getVecProb();
-        char car;
-        for (int i=0; i<vec.length; i++){
+        Map <String, Register> codigo = Lectura.getInstance().getCodigo();
+        ArrayList<String> indice = Lectura.getInstance().getIndice();
 
+        double cantInfo = 0, entropia = 0, probabilidad, longMedia = 0.0;
+        double frectotal = 0;
+        int longitud, n = Lectura.getInstance().getIndice().size();
+
+        for (int i=0; i<n;i++){
+
+           longitud = indice.get(i).length();
+           probabilidad = codigo.get(indice.get(i)).getProb();
+           longMedia += longitud * probabilidad;
         }
-    }*/
+        return longMedia;
+    }
+
+    public boolean isCompacto(){
+        return true;
+    }
 
 }
+
 
 
 
