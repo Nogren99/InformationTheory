@@ -1,14 +1,9 @@
 package modelo;
 import Exepciones.noSePudoLeerException;
-import modelo.Lectura;
-import java.util.Arrays;
-
-import static modelo.Lectura.*;
 
 public class Calculos {
 
     public float matProbabilidades[][];
-    public Lectura lectura = new Lectura();
 
     public Calculos() {
 
@@ -147,13 +142,14 @@ public class Calculos {
         String vec[]=Lectura.getInstance().getVec();
         double vecProb[]=Lectura.getInstance().getVecProb();
         double cantInfo = 0, entropia = 0, probabilidad;
-        int n=vec[0].length();
+        int longitud = 0;;
         //System.out.println(n);
         char car;
         for (int i=0; i<vec.length; i++){
             car = vec[i].charAt(0); //voy leyendo cada caracter de cada posicion del vector. Por ej si tengo CBA, lee primero la C, desp la B y así
             probabilidad = vecProb[Lectura.getInstance().getAlfabeto().get(car)];
-            for (int j=1; j<n; j++){
+            longitud=vec[i].length();
+            for (int j=1; j<longitud; j++){
                 car = vec[i].charAt(j); //voy leyendo cada caracter de cada posicion del vector. Por ej si tengo CBA, lee primero la C, desp la B y así
                 probabilidad = probabilidad*vecProb[Lectura.getInstance().getAlfabeto().get(car)];
             }
@@ -164,7 +160,37 @@ public class Calculos {
         System.out.println("CantInfo 2a: " +cantInfo);
     }
 
-    
+  /*  public double longitudMedia (){
+        double probabilidad=0, resp=0;
+        int longitud =0, j;
+        String vec[]=Lectura.getInstance().getVec();
+        double vecProb[]=Lectura.getInstance().getVecProb();
+        char car;
+        for (int i=0; i<vec.length; i++){
+            car = vec[i].charAt(0); //voy leyendo cada caracter de cada posicion del vector. Por ej si tengo CBA, lee primero la C, desp la B y así
+            probabilidad = vecProb[Lectura.getInstance().getAlfabeto().get(car)];
+            longitud=vec[i].length();
+            //System.out.println(longitud);
+            for (j=1; j<longitud; j++){
+                car = vec[i].charAt(j); //voy leyendo cada caracter de cada posicion del vector. Por ej si tengo CBA, lee primero la C, desp la B y así
+                probabilidad = probabilidad*vecProb[Lectura.getInstance().getAlfabeto().get(car)];
+            }
+            resp += longitud*probabilidad;
+            //System.out.println(probabilidad);
+        }
+        return resp;
+    }*/
+
+    /*public void longMedia (){
+        double probabilidad=0, resp=0;
+        int longitud =0, j;
+        String vec[]=Lectura.getInstance().getVec();
+        double vecProb[]=Lectura.getInstance().getVecProb();
+        char car;
+        for (int i=0; i<vec.length; i++){
+
+        }
+    }*/
 
 }
 
