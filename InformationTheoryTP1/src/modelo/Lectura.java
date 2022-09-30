@@ -163,7 +163,12 @@ public class Lectura {
                 mensaje += str;
 
             while (j<10000) {
-                simbolo = mensaje.substring(j, j + n);
+                if (n==3 && j==9999)
+                    simbolo = mensaje.substring(j);
+                else if (n==7 && j==9996)
+                    simbolo = mensaje.substring(j, j+4);
+                else
+                    simbolo = mensaje.substring(j, j + n);
                 if(!codigo.containsKey(simbolo)){
                     indice.add(simbolo);
                     codigo.put(simbolo, new Register(simbolo, 1));
