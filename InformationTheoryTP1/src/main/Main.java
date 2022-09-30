@@ -23,7 +23,8 @@ public class Main {
         calculos.totalColumna(lectura.getMatriz());
         calculos.muestraMatriz();
         calculos.memoriaNula();
-        lectura.separaTexto(5);
+        lectura.separaTexto(7);
         calculos.calculaCantInfo();
+        System.out.println("Kraft: "+Calculos.kraft(lectura.getVec(), 7));
     }
 }

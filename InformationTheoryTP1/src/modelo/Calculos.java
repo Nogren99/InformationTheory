@@ -164,7 +164,17 @@ public class Calculos {
         System.out.println("CantInfo 2a: " +cantInfo);
     }
 
-    
+
+
+    public static double kraft(String[] palabra,int tamanioPal) {
+        double kraft=0;
+        for(int i=0;i<palabra.length;i++){
+            System.out.println(palabra[i]);
+            System.out.println(i);
+            kraft+=Math.pow(2,- palabra[i].length());
+        }
+        return kraft;
+    }
 
 }
 
