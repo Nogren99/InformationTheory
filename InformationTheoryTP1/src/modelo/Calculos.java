@@ -8,7 +8,9 @@ public class Calculos {
     public Lectura lectura = new Lectura();
 
     public Calculos() {
+
         this.matProbabilidades = new float[3][3];
+
     }
 
     public void  totalColumna(int mat[][]){
@@ -128,6 +130,20 @@ public class Calculos {
         }
         System.out.println("Entropia extension orden 20 por popiedad: "+entropia*20);
         return entropia;
+    }
+
+    public void calculaCantInfo(String vec[], double vecProb[]){
+        double cantInfo = 0, entropia = 0, probabilidad = 0;
+        int n=vec[i].length();
+        char car;
+        for (int i=0; i<vec.length; i++){
+            for (int j=0; j<n; j++){
+                car = vec[i].charAt(j);
+                probabilidad *= vecProb[lectura.alfabeto.get(car)];
+                entropia += probabilidad*( Math.log10(1/probabilidad) / Math.log10(n));
+                cantInfo += Math.log10(1/probabilidad) / Math.log10(n);
+            }
+        }
     }
    /* public void escribeArch (String linea){
         try {

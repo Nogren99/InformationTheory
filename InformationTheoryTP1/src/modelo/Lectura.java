@@ -89,12 +89,11 @@ public class Lectura {
             while ((str = obj.readLine()) != null)
                 mensaje += str;
             //System.out.println(mensaje.substring(j,j+2));
-            for (int i=0; i<vec.length; i++){
-                vec[i]=mensaje.substring(j, j+n);
+            for (int i=0; i<vec.length; i++) {
+                vec[i] = mensaje.substring(j, j + n);
                 j += n;
-                System.out.println(vec[i]);
+                //System.out.println(vec[i]);
             }
-            //System.out.println(mensaje.substring(0,15));
         }
         catch (FileNotFoundException e) {
             throw new RuntimeException(e);
