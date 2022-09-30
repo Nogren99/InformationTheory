@@ -81,7 +81,8 @@ public class Lectura {
         File doc = new File("src/assets/datos.txt");
         String mensaje="", str;
         //int i1 = 3334;
-        vec[] = new String[(int)10000/n];
+
+        this.vec = new String[(int)10000/n];
         int j=0;
         try {
             BufferedReader obj = new BufferedReader(new FileReader(doc));
