@@ -209,7 +209,7 @@ public class Calculos {
             i++;
         }
 
-        return compacto;
+        return true;
     }
 
 }
