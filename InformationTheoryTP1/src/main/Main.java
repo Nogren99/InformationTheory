@@ -9,21 +9,21 @@ public class Main {
 
     public static void main(String [] args) throws noSePudoLeerException {
 
-        Lectura lectura = new Lectura();
+        Lectura lectura = Lectura.getInstance();
         Calculos calculos = new Calculos();
-
+        char car;
         int i,j=0;
 
+        lectura.cargaAlfabeto();
+        car = 'A';
+        System.out.println(lectura.getAlfabeto().get(car));
         lectura.leeArch();
         lectura.muestraMatriz();
         System.out.println("------------");
         calculos.totalColumna(lectura.getMatriz());
         calculos.muestraMatriz();
         calculos.memoriaNula();
-        lectura.calculaProb();
         lectura.separaTexto(5);
-        //calculos.generaExtension(lectura.getVecProb());
-        System.out.println(calculos.entropiaFuente(lectura.getVecProb()));
-        calculos.calculaCantInfo(lectura.getVec(), lectura.getVecProb());
+        calculos.calculaCantInfo();
     }
 }

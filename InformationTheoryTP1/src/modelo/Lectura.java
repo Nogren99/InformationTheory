@@ -9,17 +9,31 @@ import java.util.Map;
 public class Lectura {
 
     public int matriz[][] = new int[][]{{0, 0, 0}, {0, 0, 0}, {0, 0, 0}};
+    private static Lectura instance = null;
     public Map <Character, Integer> alfabeto = new HashMap<Character, Integer>();
     public double vecProb[] = new double[27];
     public String vec[];
     public Lectura() {
-        alfabeto.put('A',0); //agregar a medida que se lee
-        alfabeto.put('B',1);
-        alfabeto.put('C',2);
     }
 
     public int[][] getMatriz() {
         return matriz;
+    }
+
+    public Map<Character, Integer> getAlfabeto() {
+        return alfabeto;
+    }
+
+    public static Lectura getInstance() {
+        if (instance == null)
+            instance = new Lectura();
+        return instance;
+    }
+
+    public void cargaAlfabeto(){
+        this.alfabeto.put('A',0); //agregar a medida que se lee
+        this.alfabeto.put('B',1);
+        this.alfabeto.put('C',2);
     }
 
     public void leeArch() throws noSePudoLeerException {

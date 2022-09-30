@@ -1,6 +1,9 @@
 package modelo;
+import Exepciones.noSePudoLeerException;
 import modelo.Lectura;
 import java.util.Arrays;
+
+import static modelo.Lectura.*;
 
 public class Calculos {
 
@@ -62,17 +65,24 @@ public class Calculos {
         }
         if(bandera){
             System.out.println("MEMORIA NULA : SIMBOLOS ESTADISTICAMENTE INDEPENDIENTE");
-            //llamar al que genera la extension y calcula la entropia
+            //this.generaExtension();
+            try {
+                Lectura.getInstance().calculaProb();
+            } catch (noSePudoLeerException e) {
+                throw new RuntimeException(e);
+            }
+            System.out.println("Entropia fuente: "+this.entropiaFuente());
+            System.out.println("Entropia orden 20: "+this.entropiaOrdenN(20));
         }
 
         else
             System.out.println("NO NULA");
     }
 
-    public void generaExtension(double vecProb[]){
+    public void generaExtension(){
         String linea="";
         double entropia = 0;
-       // double vecProb[] = lectura.getVecProb();
+        double vecProb[] = Lectura.getInstance().getVecProb();
         //char linea[] = new char[];
         char vec[] = new char[]{'A', 'B', 'C'};
         for (int a = 0; a < 3; a++){
@@ -120,38 +130,41 @@ public class Calculos {
         System.out.println("Entropia extension orden 20: "+entropia);
     }
 
-    public double entropiaFuente (double[] vecProb){
+    public double entropiaFuente (){
         double entropia=0;
-        //lectura.calculaProb();
-       // double[] vecProb = lectura.getVecProb();
+        double vecProb[]= Lectura.getInstance().getVecProb();
         for (int i=0; i<3; i++){
-            //System.out.println(vecProb[i]);
             entropia += vecProb[i]*( Math.log10(1/vecProb[i]) / Math.log10(3));
         }
-        System.out.println("Entropia extension orden 20 por popiedad: "+entropia*20);
         return entropia;
     }
 
-    public void calculaCantInfo(String vec[], double vecProb[]){
+    public double entropiaOrdenN (int n){
+        return n*this.entropiaFuente();
+    }
+
+    public void calculaCantInfo(){
+        String vec[]=Lectura.getInstance().getVec();
+        double vecProb[]=Lectura.getInstance().getVecProb();
         double cantInfo = 0, entropia = 0, probabilidad;
         int n=vec[0].length();
         //System.out.println(n);
         char car;
         for (int i=0; i<vec.length; i++){
             car = vec[i].charAt(0); //voy leyendo cada caracter de cada posicion del vector. Por ej si tengo CBA, lee primero la C, desp la B y así
-            probabilidad = vecProb[lectura.alfabeto.get(car)];
+            probabilidad = vecProb[Lectura.getInstance().getAlfabeto().get(car)];
             for (int j=1; j<n; j++){
                 car = vec[i].charAt(j); //voy leyendo cada caracter de cada posicion del vector. Por ej si tengo CBA, lee primero la C, desp la B y así
-                probabilidad = probabilidad*vecProb[lectura.alfabeto.get(car)];
-                //System.out.println(vecProb[lectura.alfabeto.get(car)]);
+                probabilidad = probabilidad*vecProb[Lectura.getInstance().getAlfabeto().get(car)];
             }
-            //System.out.println(probabilidad);
-            entropia += probabilidad*( Math.log10(1/probabilidad) / Math.log10(n));
-            cantInfo += Math.log10(1/probabilidad) / Math.log10(n);
+            entropia += probabilidad*( Math.log10(1/probabilidad) / Math.log10(3));
+            cantInfo += Math.log10(1/probabilidad) / Math.log10(3);
         }
         System.out.println("Entropia 2a: " +entropia);
         System.out.println("CantInfo 2a: " +cantInfo);
     }
+
+    
 
 }
 
