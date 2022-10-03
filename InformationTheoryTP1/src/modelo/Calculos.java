@@ -1,9 +1,7 @@
 package modelo;
 import Exepciones.noSePudoLeerException;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Calculos {
 
@@ -190,7 +188,9 @@ public class Calculos {
 
         Map <String, Register> codigo = Lectura.getInstance().getCodigo();
         ArrayList<String> indice = Lectura.getInstance().getIndice();
-        int i=0 ,n = Lectura.getInstance().getIndice().size();
+        int i=0;
+        int n = Lectura.getInstance().getN();
+
         int r = Lectura.getInstance().alfabeto.size();
         boolean compacto = true;
 
@@ -233,6 +233,35 @@ public class Calculos {
         return 1-rendimiento();
     }
 
+    public static <K, V extends Comparable<V> > Map<K, V>
+    valueSort(final Map<K, V> map)
+    {
+        // Static Method with return type Map and
+        // extending comparator class which compares values
+        // associated with two keys
+        Comparator<K> valueComparator = new Comparator<K>() {
+
+            // return comparison results of values of
+            // two keys
+            public int compare(K k1, K k2)
+            {
+                int comp = map.get(k1).compareTo(
+                        map.get(k2));
+                if (comp == 0)
+                    return 1;
+                else
+                    return comp;
+            }
+
+        };
+
+        // SortedMap created using the comparator
+        Map<K, V> sorted = new TreeMap<K, V>(valueComparator);
+
+        sorted.putAll(map);
+
+        return sorted;
+    }
 }
 
 

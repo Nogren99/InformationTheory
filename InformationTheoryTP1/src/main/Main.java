@@ -2,6 +2,7 @@ package main;
 
 import Exepciones.noSePudoLeerException;
 import modelo.Calculos;
+import modelo.Huffman;
 import modelo.Lectura;
 
 public class Main {
@@ -11,6 +12,7 @@ public class Main {
 
         Lectura lectura = Lectura.getInstance();
         Calculos calculos = new Calculos();
+        Huffman huffman = new Huffman();
         char car;
         int i,j=0;
 
@@ -23,7 +25,7 @@ public class Main {
         calculos.totalColumna(lectura.getMatriz());
         calculos.muestraMatriz();
         calculos.memoriaNula();
-        lectura.separaTexto(7);
+        lectura.separaTexto(5);
         calculos.calculaCantInfo();
         System.out.println("Longitud Media: "+calculos.longitudMedia());
 
@@ -32,5 +34,11 @@ public class Main {
         calculos.KraftMcMillan();
         System.out.println("El rendimiento o eficiencia es:"+calculos.rendimiento());
         System.out.println("La redundancia es:"+calculos.redundancia());
+        System.out.println("UFFFF MAN");
+
+       // Lectura.getInstance().setCodigo(Calculos.valueSort(Lectura.getInstance().getCodigo()));
+        //System.out.println(Lectura.getInstance().getCodigo().toString());
+        huffman.creaCodHuffman();
+       // Lectura.getInstance().getCodigo();
     }
 }
