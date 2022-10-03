@@ -8,6 +8,7 @@ import java.util.Map;
 public class Calculos {
 
     public float matProbabilidades[][];
+    public double entropiaN=0;
 
     public Calculos() {
 
@@ -147,7 +148,7 @@ public class Calculos {
         Map <String, Register> codigo = Lectura.getInstance().getCodigo();
         ArrayList<String> indice = Lectura.getInstance().getIndice();
 
-        double cantInfo = 0, entropia = 0, probabilidad;
+        double cantInfo = 0, probabilidad;
         double frectotal = 0;
         int n = Lectura.getInstance().getIndice().size();
 
@@ -159,10 +160,10 @@ public class Calculos {
             codigo.get(indice.get(i)).setProb((double) codigo.get(indice.get(i)).getFrec()/frectotal);
             probabilidad = codigo.get(indice.get(i)).getProb();
             cantInfo += Math.log10(1/probabilidad) / Math.log10(3);
-            entropia += probabilidad*( Math.log10(1/probabilidad) / Math.log10(3));
+            this.entropiaN += probabilidad*( Math.log10(1/probabilidad) / Math.log10(3));
         }
 
-        System.out.println("Entropia 2a: " +entropia);
+        System.out.println("Entropia 2a: " +this.entropiaN);
         System.out.println("CantInfo 2a: " +cantInfo);
 
     }
@@ -222,6 +223,14 @@ public class Calculos {
             kraft += Math.pow(r, -longitud);
         }
         System.out.println("La inecuacion de Kraft resulta: "+kraft);
+    }
+
+    public double rendimiento(){
+        return entropiaN/this.longitudMedia();
+    }
+
+    public double redundancia(){
+        return 1-rendimiento();
     }
 
 }

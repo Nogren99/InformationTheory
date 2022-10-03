@@ -26,8 +26,11 @@ public class Main {
         lectura.separaTexto(7);
         calculos.calculaCantInfo();
         System.out.println("Longitud Media: "+calculos.longitudMedia());
+
         System.out.println("Cambio cualquiera");
         System.out.println(calculos.isCompacto());
         calculos.KraftMcMillan();
+        System.out.println("El rendimiento o eficiencia es:"+calculos.rendimiento());
+        System.out.println("La redundancia es:"+calculos.redundancia());
     }
 }
