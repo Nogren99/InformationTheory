@@ -212,6 +212,18 @@ public class Calculos {
         return true;
     }
 
+    public void KraftMcMillan (){
+        Map <String, Register> codigo = Lectura.getInstance().getCodigo();
+        ArrayList<String> indice = Lectura.getInstance().getIndice();
+        int r = 3, q = indice.size(), longitud;
+        double kraft = 0;
+        for (int i=0; i<q;i++){
+            longitud = indice.get(i).length();
+            kraft += Math.pow(r, -longitud);
+        }
+        System.out.println("La inecuacion de Kraft resulta: "+kraft);
+    }
+
 }
 
 
