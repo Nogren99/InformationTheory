@@ -24,7 +24,8 @@ public class Huffman {
 //Identifying a root node
         //if (root.left == null && root.right == null && Character.isLetter(root.c)) {
         if (root.left == null && root.right == null ) {
-            System.out.println(root.c + ":" + s + " frec: "+ root.data);
+            EscribeArchivos.getInstance().escribe(root.c + ":" + s + " frec: "+ root.data);
+            //System.out.println(root.c + ":" + s + " frec: "+ root.data);
             return;
         }
 //Every time we turn left we add a zero to the code representation
@@ -34,12 +35,11 @@ public class Huffman {
     }
 
     public void creaCodHuffman() {
-        //int n = 5;
+
         int n = Lectura.getInstance().getN();
-        //char[] message = { 'a', 'b', 'c', 'd', 'e' };
         Map <String, Register> codigo = Lectura.getInstance().getCodigo();
         ArrayList<String> indice = Lectura.getInstance().getIndice();
-        int[] frequen = { 10, 64, 5, 44, 1 };
+
         // Putting our data in min-priority queue
         PriorityQueue<Node> q = new PriorityQueue<Node>(n, new compare());
         for (int i = 0; i < n; i++) {
@@ -73,7 +73,9 @@ public class Huffman {
             // Adding this to the queue to build up higher levels of the tree
             q.add(temp);
         }
+        EscribeArchivos.getInstance().preparaEscritura();
         muestraCodHuffman(root, "");
+        EscribeArchivos.getInstance().finalizaEscritura();
     }
     /*1. Cree un nodo de hoja para cada personaje y agréguelo a la cola de prioridad.
     2. Mientras haya más de un nodo en la queue:
