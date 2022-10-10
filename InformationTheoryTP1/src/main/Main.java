@@ -5,6 +5,10 @@ import modelo.Calculos;
 import modelo.Huffman;
 import modelo.Lectura;
 
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+
 public class Main {
 
 
@@ -25,6 +29,8 @@ public class Main {
         calculos.totalColumna(lectura.getMatriz());
         calculos.muestraMatriz();
         calculos.memoriaNula();
+
+        //Segunda Parte
         lectura.separaTexto(5);
         calculos.calculaCantInfo();
         System.out.println("Longitud Media: "+calculos.longitudMedia());
@@ -36,8 +42,10 @@ public class Main {
         System.out.println("La redundancia es:"+calculos.redundancia());
         System.out.println("UFFFF MAN");
 
-       // Lectura.getInstance().setCodigo(Calculos.valueSort(Lectura.getInstance().getCodigo()));
-        //System.out.println(Lectura.getInstance().getCodigo().toString());
+        //Lectura.getInstance().setCodigo(Calculos.valueSort(Lectura.getInstance().getCodigo()));
+        //Set set = Lectura.getInstance().getCodigo().entrySet();
+
+        System.out.println(Lectura.getInstance().getCodigo().toString());
         huffman.creaCodHuffman();
        // Lectura.getInstance().getCodigo();
     }

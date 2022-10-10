@@ -79,7 +79,7 @@ class Register implements Comparable {
     @Override
     public int compareTo(Object o) {
         Register r = (Register) o;
-        if (this.getFrec() > r.getFrec())
+        if (this.getFrec() < r.getFrec())
             return 1;
         else
             return 0;
@@ -208,7 +208,6 @@ public class Lectura {
 
         try {
             BufferedReader obj = new BufferedReader(new FileReader(doc));
-
             while ((str = obj.readLine()) != null)
                 mensaje += str;
 
