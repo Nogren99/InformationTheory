@@ -19,6 +19,7 @@ class compare implements Comparator<Node> {
 
 public class Huffman {
 
+
     public void muestraCodHuffman(Node root, String s) {
 
 //Identifying a root node
