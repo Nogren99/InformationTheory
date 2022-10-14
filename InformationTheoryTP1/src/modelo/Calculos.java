@@ -152,7 +152,6 @@ public class Calculos {
         int n = Lectura.getInstance().getIndice().size();
 
         for (int i=0; i<n;i++){
-            System.out.println(codigo.get("AAA"));
             frectotal += codigo.get(indice.get(i)).getFrec();
         }
 
