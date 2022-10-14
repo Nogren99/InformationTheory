@@ -4,10 +4,11 @@ import Exepciones.noSePudoLeerException;
 import modelo.Calculos;
 import modelo.Huffman;
 import modelo.Lectura;
+import modelo.Register;
 
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
+
+import static modelo.Ordena.valueSort;
 
 public class Main {
 
@@ -30,12 +31,12 @@ public class Main {
         calculos.muestraMatriz();
         calculos.memoriaNula();
 
-        //Segunda Parte
+       //Segunda Parte
+        System.out.println("---------------------------- 3 caracteres ------------------------------------------------");
         lectura.separaTexto(3);
         calculos.calculaCantInfo();
         System.out.println("Longitud Media: "+calculos.longitudMedia());
 
-        System.out.println("Cambio cualquiera");
         System.out.println(calculos.isCompacto());
         calculos.KraftMcMillan();
         System.out.println("El rendimiento o eficiencia es:"+calculos.rendimiento());
@@ -50,16 +51,15 @@ public class Main {
 
 
         //Segunda Parte
+        System.out.println("---------------------------- 5 caracteres ------------------------------------------------");
         lectura.separaTexto(5);
         calculos.calculaCantInfo();
         System.out.println("Longitud Media: "+calculos.longitudMedia());
 
-        System.out.println("Cambio cualquiera");
         System.out.println(calculos.isCompacto());
         calculos.KraftMcMillan();
         System.out.println("El rendimiento o eficiencia es:"+calculos.rendimiento());
         System.out.println("La redundancia es:"+calculos.redundancia());
-        System.out.println("UFFFF MAN");
 
         //Lectura.getInstance().setCodigo(Calculos.valueSort(Lectura.getInstance().getCodigo()));
         //Set set = Lectura.getInstance().getCodigo().entrySet();
@@ -70,16 +70,15 @@ public class Main {
 
 
         //Segunda Parte
+        System.out.println("---------------------------- 7 caracteres ------------------------------------------------");
         lectura.separaTexto(7);
         calculos.calculaCantInfo();
         System.out.println("Longitud Media: "+calculos.longitudMedia());
 
-        System.out.println("Cambio cualquiera");
         System.out.println(calculos.isCompacto());
         calculos.KraftMcMillan();
         System.out.println("El rendimiento o eficiencia es:"+calculos.rendimiento());
         System.out.println("La redundancia es:"+calculos.redundancia());
-        System.out.println("UFFFF MAN");
 
         //Lectura.getInstance().setCodigo(Calculos.valueSort(Lectura.getInstance().getCodigo()));
         //Set set = Lectura.getInstance().getCodigo().entrySet();

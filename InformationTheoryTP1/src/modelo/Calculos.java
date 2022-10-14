@@ -145,12 +145,14 @@ public class Calculos {
 
         Map <String, Register> codigo = Lectura.getInstance().getCodigo();
         ArrayList<String> indice = Lectura.getInstance().getIndice();
+        this.entropiaN = 0;
 
         double cantInfo = 0, probabilidad;
         double frectotal = 0;
         int n = Lectura.getInstance().getIndice().size();
 
         for (int i=0; i<n;i++){
+            System.out.println(codigo.get("AAA"));
             frectotal += codigo.get(indice.get(i)).getFrec();
         }
 
@@ -158,7 +160,7 @@ public class Calculos {
             codigo.get(indice.get(i)).setProb((double) codigo.get(indice.get(i)).getFrec()/frectotal);
             probabilidad = codigo.get(indice.get(i)).getProb();
             cantInfo += Math.log10(1/probabilidad) / Math.log10(3);
-            this.entropiaN += probabilidad*( Math.log10(1/probabilidad) / Math.log10(3));
+            this.entropiaN += probabilidad*(Math.log10(1/probabilidad) / Math.log10(3));
         }
 
         System.out.println("Entropia 2a: " +this.entropiaN);
@@ -171,13 +173,13 @@ public class Calculos {
         Map <String, Register> codigo = Lectura.getInstance().getCodigo();
         ArrayList<String> indice = Lectura.getInstance().getIndice();
 
-        double cantInfo = 0, entropia = 0, probabilidad, longMedia = 0.0;
+        double cantInfo = 0, entropia = 0, probabilidad = 0, longMedia = 0.0;
         double frectotal = 0;
-        int longitud, n = Lectura.getInstance().getIndice().size();
+        int longitud = 0, n = Lectura.getInstance().getIndice().size();
 
         for (int i=0; i<n;i++){
-
            longitud = indice.get(i).length();
+            //System.out.println(longitud);
            probabilidad = codigo.get(indice.get(i)).getProb();
            longMedia += longitud * probabilidad;
         }
@@ -199,7 +201,7 @@ public class Calculos {
         while (compacto == true && i<n){
         //for (int i=0; i<n;i++){
             probabilidad = codigo.get(indice.get(i)).getProb();
-            System.out.println("prob"+probabilidad);
+            //System.out.println("prob"+probabilidad);
             //alpha = Math.log10(probabilidad - (double) 1/r);
             alpha = Math.log10(probabilidad)/Math.log10((double) 1/r);   // probar cambiando la base, algo como 1/10000 para encontrar un alpha entero
             alpha = alpha;
@@ -209,7 +211,6 @@ public class Calculos {
             //System.out.println("alpha "+codigo.get(indice.get(i)).getFrec()+" "+ alpha);
             i++;
         }
-
         return true;
     }
 
