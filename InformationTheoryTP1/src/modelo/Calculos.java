@@ -14,6 +14,10 @@ public class Calculos {
 
     }
 
+    public float[][] getMatProbabilidades() {
+        return matProbabilidades;
+    }
+
     public void  totalColumna(int mat[][]){
 
         int totalColumnas[]={0,0,0};
@@ -55,7 +59,7 @@ public class Calculos {
         while( i<=2 && bandera){
             promFila = (matProbabilidades[i][0]+matProbabilidades[i][1]+matProbabilidades[i][2] ) / 3;
             while( j<=2 && bandera){
-                if( Math.abs(matProbabilidades[i][j]-promFila)>=0.03  )
+                if( Math.abs(matProbabilidades[i][j]-promFila) >= 0.02)
                     bandera=false;
                 j++;
             }
@@ -72,7 +76,6 @@ public class Calculos {
             System.out.println("Entropia fuente: "+this.entropiaFuente());
             System.out.println("Entropia orden 20: "+this.entropiaOrdenN(20));
         }
-
         else
             System.out.println("NO NULA");
     }
