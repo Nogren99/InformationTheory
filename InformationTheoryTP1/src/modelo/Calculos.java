@@ -55,7 +55,7 @@ public class Calculos {
         while( i<=2 && bandera){
             promFila = (matProbabilidades[i][0]+matProbabilidades[i][1]+matProbabilidades[i][2] ) / 3;
             while( j<=2 && bandera){
-                if( Math.abs(matProbabilidades[i][j]-promFila)>=0.03  )
+                if( Math.abs(matProbabilidades[i][j]-promFila) >= 0.02)
                     bandera=false;
                 j++;
             }
