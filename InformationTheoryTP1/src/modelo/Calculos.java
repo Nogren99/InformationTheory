@@ -146,7 +146,6 @@ public class Calculos {
         Map <String, Register> codigo = Lectura.getInstance().getCodigo();
         ArrayList<String> indice = Lectura.getInstance().getIndice();
         this.entropiaN = 0;
-
         double cantInfo = 0, probabilidad;
         double frectotal = 0;
         int n = Lectura.getInstance().getIndice().size();
