@@ -88,7 +88,7 @@ public class Lectura {
     }
 
 
-    public void muestraMatriz(){
+    public void muestraMatriz(int matriz [][]){
         char aux = 'A';
         System.out.println("Matriz de apariciones condicionadas:");
         System.out.println("     A      B      C");
@@ -96,11 +96,28 @@ public class Lectura {
             System.out.print(aux+" |");
             aux++;
             for(int j=0;j<3;j++){
-                System.out.print(" "+matriz[i][j]+" | ");
+                //System.out.print(" "+matriz[i][j]+" | ");
+                System.out.printf("%04d | ",matriz[i][j]);
             }
             System.out.println();
         }
     }
+
+    public void muestraMatriz(float matriz [][]){
+        char aux = 'A';
+        System.out.println("Matriz de probabilidades:");
+        System.out.println("       A          B          C");
+        for(int i=0;i<3;i++){
+            System.out.print(aux+" |");
+            aux++;
+            for(int j=0;j<3;j++){
+                //System.out.print(" "+matriz[i][j]+" | ");
+                System.out.printf("%f | ",matriz[i][j]);
+            }
+            System.out.println();
+        }
+    }
+
 
     public void calculaProb() throws noSePudoLeerException {
         FileReader fr;

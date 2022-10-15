@@ -25,10 +25,11 @@ public class Main {
         car = 'A';
         System.out.println(lectura.getAlfabeto().get(car));
         lectura.leeArch();
-        lectura.muestraMatriz();
+        lectura.muestraMatriz(lectura.getMatriz());
         System.out.println("------------");
         calculos.totalColumna(lectura.getMatriz());
-        calculos.muestraMatriz();
+        lectura.muestraMatriz(calculos.getMatProbabilidades());
+        //calculos.muestraMatriz();
         calculos.memoriaNula();
 
        //Segunda Parte

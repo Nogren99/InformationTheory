@@ -14,6 +14,10 @@ public class Calculos {
 
     }
 
+    public float[][] getMatProbabilidades() {
+        return matProbabilidades;
+    }
+
     public void  totalColumna(int mat[][]){
 
         int totalColumnas[]={0,0,0};
@@ -72,7 +76,6 @@ public class Calculos {
             System.out.println("Entropia fuente: "+this.entropiaFuente());
             System.out.println("Entropia orden 20: "+this.entropiaOrdenN(20));
         }
-
         else
             System.out.println("NO NULA");
     }
