@@ -157,8 +157,10 @@ public class Lectura {
                 mensaje += str;
 
             while (j<10000) {
-                if (n==3 && j==9999)
+                if (n==3 && j==9999) {
                     simbolo = mensaje.substring(j);
+                    //System.out.println("Simbolooooooooooooooooo"+simbolo);
+                }
                 else if (n==7 && j==9996)
                     simbolo = mensaje.substring(j, j+4);
                 else
@@ -166,6 +168,7 @@ public class Lectura {
                 if(!codigo.containsKey(simbolo)){
                     indice.add(simbolo);
                     codigo.put(simbolo, new Register(simbolo, 1));
+                    //System.out.println(codigo.get(simbolo));
                 }
                 else {
                     actual=codigo.get(simbolo);
@@ -174,6 +177,7 @@ public class Lectura {
                 j += n;
             }
             System.out.println(codigo.toString());
+            System.out.println(codigo.get("C"));
         }
 
         catch (FileNotFoundException e) {

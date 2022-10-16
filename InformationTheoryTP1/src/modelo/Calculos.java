@@ -174,13 +174,11 @@ public class Calculos {
         Map <String, Register> codigo = Lectura.getInstance().getCodigo();
         ArrayList<String> indice = Lectura.getInstance().getIndice();
 
-        double cantInfo = 0, entropia = 0, probabilidad = 0, longMedia = 0.0;
-        double frectotal = 0;
+        double probabilidad = 0, longMedia = 0.0;
         int longitud = 0, n = Lectura.getInstance().getIndice().size();
 
         for (int i=0; i<n;i++){
            longitud = indice.get(i).length();
-            //System.out.println(longitud);
            probabilidad = codigo.get(indice.get(i)).getProb();
            longMedia += longitud * probabilidad;
         }
@@ -220,8 +218,9 @@ public class Calculos {
         ArrayList<String> indice = Lectura.getInstance().getIndice();
         int r = 3, q = indice.size(), longitud;
         double kraft = 0;
-        for (int i=0; i<q;i++){
+        for (int i=0; i<q;i++) {
             longitud = indice.get(i).length();
+            //System.out.println(longitud);
             kraft += Math.pow(r, -longitud);
         }
         System.out.println("La inecuacion de Kraft resulta: "+kraft);
