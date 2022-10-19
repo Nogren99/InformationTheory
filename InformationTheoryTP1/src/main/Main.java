@@ -25,7 +25,6 @@ public class Main {
         System.out.println("------------");
         calculos.totalColumna(lectura.getMatriz());
         lectura.muestraMatriz(calculos.getMatProbabilidades());
-        //calculos.muestraMatriz();
         calculos.memoriaNula();
 
        //Segunda Parte
@@ -34,14 +33,10 @@ public class Main {
         calculos.calculaCantInfo();
         System.out.println("Longitud Media: "+calculos.longitudMedia());
 
-        System.out.println(calculos.isCompacto());
+        calculos.isCompacto();
         calculos.KraftMcMillan();
         System.out.println("El rendimiento o eficiencia es:"+calculos.rendimiento());
         System.out.println("La redundancia es:"+calculos.redundancia());
-        System.out.println("UFFFF MAN");
-
-        //Lectura.getInstance().setCodigo(Calculos.valueSort(Lectura.getInstance().getCodigo()));
-        //Set set = Lectura.getInstance().getCodigo().entrySet();
 
         System.out.println(Lectura.getInstance().getCodigo().toString());
         huffman.creaTablaHuffman();
@@ -54,37 +49,31 @@ public class Main {
         calculos.calculaCantInfo();
         System.out.println("Longitud Media: "+calculos.longitudMedia());
 
-        System.out.println(calculos.isCompacto());
+        calculos.isCompacto();
         calculos.KraftMcMillan();
         System.out.println("El rendimiento o eficiencia es:"+calculos.rendimiento());
         System.out.println("La redundancia es:"+calculos.redundancia());
 
-        //Lectura.getInstance().setCodigo(Calculos.valueSort(Lectura.getInstance().getCodigo()));
-        //Set set = Lectura.getInstance().getCodigo().entrySet();
-
         System.out.println(Lectura.getInstance().getCodigo().toString());
         huffman.creaTablaHuffman();
         EscribeArchivos.getInstance().creaArch(5);
-       // Lectura.getInstance().getCodigo();
+
 
 
         lectura.getTablaHuffman().clear();
-//        //Segunda Parte
-//        System.out.println("---------------------------- 7 caracteres ------------------------------------------------");
-//        lectura.separaTexto(7);
-//        calculos.calculaCantInfo();
-//        System.out.println("Longitud Media: "+calculos.longitudMedia());
-//
-//        System.out.println(calculos.isCompacto());
-//        calculos.KraftMcMillan();
-//        System.out.println("El rendimiento o eficiencia es:"+calculos.rendimiento());
-//        System.out.println("La redundancia es:"+calculos.redundancia());
-//
-//        //Lectura.getInstance().setCodigo(Calculos.valueSort(Lectura.getInstance().getCodigo()));
-//        //Set set = Lectura.getInstance().getCodigo().entrySet();
-//
-//        System.out.println(Lectura.getInstance().getCodigo().toString());
-//        huffman.creaTablaHuffman();
-//        EscribeArchivos.getInstance().creaArch(3);
+        //Segunda Parte
+        System.out.println("---------------------------- 7 caracteres ------------------------------------------------");
+        lectura.separaTexto(7);
+        calculos.calculaCantInfo();
+        System.out.println("Longitud Media: "+calculos.longitudMedia());
+
+        calculos.isCompacto();
+        calculos.KraftMcMillan();
+        System.out.println("El rendimiento o eficiencia es:"+calculos.rendimiento());
+        System.out.println("La redundancia es:"+calculos.redundancia());
+
+        System.out.println(Lectura.getInstance().getCodigo().toString());
+        huffman.creaTablaHuffman();
+        EscribeArchivos.getInstance().creaArch(7);
     }
 }

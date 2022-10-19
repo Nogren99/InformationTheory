@@ -185,32 +185,30 @@ public class Calculos {
         return longMedia;
     }
 
-    public boolean isCompacto(){
+    public void isCompacto(){
 
         Map <String, Register> codigo = Lectura.getInstance().getCodigo();
         ArrayList<String> indice = Lectura.getInstance().getIndice();
         int i=0;
-        int n = Lectura.getInstance().getN();
+        int cantSimbolos = Lectura.getInstance().getCantSimbolos();
+        int cantCaracteres = Lectura.getInstance().getCantCaracteres();
 
         int r = Lectura.getInstance().alfabeto.size();
         boolean compacto = true;
 
-        double probabilidad, alpha = 0.0;
+        double probabilidad, logTemp=0;
 
-        while (compacto == true && i<n){
-        //for (int i=0; i<n;i++){
+        while (compacto == true && i<cantSimbolos){
             probabilidad = codigo.get(indice.get(i)).getProb();
-            //System.out.println("prob"+probabilidad);
-            //alpha = Math.log10(probabilidad - (double) 1/r);
-            alpha = Math.log10(probabilidad)/Math.log10((double) 1/r);   // probar cambiando la base, algo como 1/10000 para encontrar un alpha entero
-            alpha = alpha;
-            if(alpha - 5 < 0){
+            logTemp = Math.log10(1/probabilidad)/Math.log10(r);
+            if (logTemp != cantCaracteres)
                 compacto = false;
-            }
-            //System.out.println("alpha "+codigo.get(indice.get(i)).getFrec()+" "+ alpha);
             i++;
         }
-        return true;
+        if (compacto == true)
+            System.out.println("El codigo con simbolos de "+cantCaracteres+" caracteres es compacto");
+        else
+            System.out.println("El codigo con simbolos de "+cantCaracteres+" caracteres NO es compacto");
     }
 
     public void KraftMcMillan (){
@@ -220,7 +218,6 @@ public class Calculos {
         double kraft = 0;
         for (int i=0; i<q;i++) {
             longitud = indice.get(i).length();
-            //System.out.println(longitud);
             kraft += Math.pow(r, -longitud);
         }
         System.out.println("La inecuacion de Kraft resulta: "+kraft);
@@ -232,36 +229,6 @@ public class Calculos {
 
     public double redundancia(){
         return 1-rendimiento();
-    }
-
-    public static <K, V extends Comparable<V> > Map<K, V>
-    valueSort(final Map<K, V> map)
-    {
-        // Static Method with return type Map and
-        // extending comparator class which compares values
-        // associated with two keys
-        Comparator<K> valueComparator = new Comparator<K>() {
-
-            // return comparison results of values of
-            // two keys
-            public int compare(K k1, K k2)
-            {
-                int comp = map.get(k1).compareTo(
-                        map.get(k2));
-                if (comp == 0)
-                    return 1;
-                else
-                    return comp;
-            }
-
-        };
-
-        // SortedMap created using the comparator
-        Map<K, V> sorted = new TreeMap<K, V>(valueComparator);
-
-        sorted.putAll(map);
-
-        return sorted;
     }
 }
 

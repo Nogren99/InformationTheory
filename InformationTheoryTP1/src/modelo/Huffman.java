@@ -23,7 +23,7 @@ public class Huffman {
         //if (root.left == null && root.right == null && Character.isLetter(root.c)) {
         if (root.left == null && root.right == null ) {
             //EscribeArchivos.getInstance().escribe(root.c + ":" + s + " frec: "+ root.data);
-            System.out.println(root.c + ":" + s + " frec: "+ root.data);
+           // System.out.println(root.c + ":" + s + " frec: "+ root.data);
             Lectura.getInstance().getTablaHuffman().put(root.c,s);
             return;
         }
@@ -35,7 +35,7 @@ public class Huffman {
 
     public void creaTablaHuffman() {
 
-        int n = Lectura.getInstance().getN();
+        int n = Lectura.getInstance().getCantSimbolos();
         Map <String, Register> codigo = Lectura.getInstance().getCodigo();
         ArrayList<String> indice = Lectura.getInstance().getIndice();
 

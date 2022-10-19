@@ -21,16 +21,21 @@ public class Lectura {
     public Map <String, Register> codigo = new TreeMap<String, Register>();
 
     public Map <String, String> tablaHuffman = new HashMap<String, String>();
-    public int n;
+    public int cantSimbolos;
+    public int cantCaracteres;
 
-    public void setN(int n) {
-        this.n = n;
+    public void setCantSimbolos(int cantSimbolos) {
+        this.cantSimbolos = cantSimbolos;
+    }
+
+    public int getCantCaracteres() {
+        return cantCaracteres;
     }
 
     public Lectura() {
     }
-    public int getN() {
-        return n;
+    public int getCantSimbolos() {
+        return cantSimbolos;
     }
 
     public int[][] getMatriz() {
@@ -157,6 +162,7 @@ public class Lectura {
         Register actual;
         this.indice.clear();
         this.codigo.clear();
+        this.cantCaracteres = n;
         try {
             BufferedReader obj = new BufferedReader(new FileReader(doc));
             while ((str = obj.readLine()) != null)
@@ -165,7 +171,6 @@ public class Lectura {
             while (j<10000) {
                 if (n==3 && j==9999) {
                     simbolo = mensaje.substring(j);
-                    //System.out.println("Simbolooooooooooooooooo"+simbolo);
                 }
                 else if (n==7 && j==9996)
                     simbolo = mensaje.substring(j, j+4);
@@ -174,7 +179,6 @@ public class Lectura {
                 if(!codigo.containsKey(simbolo)){
                     indice.add(simbolo);
                     codigo.put(simbolo, new Register(simbolo, 1));
-                    //System.out.println(codigo.get(simbolo));
                 }
                 else {
                     actual=codigo.get(simbolo);
@@ -183,7 +187,6 @@ public class Lectura {
                 j += n;
             }
             System.out.println(codigo.toString());
-            System.out.println(codigo.get("C"));
         }
 
         catch (FileNotFoundException e) {
@@ -191,7 +194,7 @@ public class Lectura {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        this.n = this.indice.size();
+        this.cantSimbolos = this.indice.size();
     }
     public double[] getVecProb() {
         return vecProb;
