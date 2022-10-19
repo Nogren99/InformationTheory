@@ -27,6 +27,8 @@ public class Main {
         lectura.muestraMatriz(calculos.getMatProbabilidades());
         calculos.memoriaNula();
 
+
+
        //Segunda Parte
         System.out.println("---------------------------- 3 caracteres ------------------------------------------------");
         lectura.separaTexto(3);
@@ -39,41 +41,41 @@ public class Main {
         System.out.println("La redundancia es:"+calculos.redundancia());
 
         System.out.println(Lectura.getInstance().getCodigo().toString());
-        huffman.creaTablaHuffman();
+        huffman.creaArbolHuffman();
         EscribeArchivos.getInstance().creaArch(3);
 
         lectura.getTablaHuffman().clear();
         //Segunda Parte
-        System.out.println("---------------------------- 5 caracteres ------------------------------------------------");
-        lectura.separaTexto(5);
-        calculos.calculaCantInfo();
-        System.out.println("Longitud Media: "+calculos.longitudMedia());
-
-        calculos.isCompacto();
-        calculos.KraftMcMillan();
-        System.out.println("El rendimiento o eficiencia es:"+calculos.rendimiento());
-        System.out.println("La redundancia es:"+calculos.redundancia());
-
-        System.out.println(Lectura.getInstance().getCodigo().toString());
-        huffman.creaTablaHuffman();
-        EscribeArchivos.getInstance().creaArch(5);
-
-
-
-        lectura.getTablaHuffman().clear();
-        //Segunda Parte
-        System.out.println("---------------------------- 7 caracteres ------------------------------------------------");
-        lectura.separaTexto(7);
-        calculos.calculaCantInfo();
-        System.out.println("Longitud Media: "+calculos.longitudMedia());
-
-        calculos.isCompacto();
-        calculos.KraftMcMillan();
-        System.out.println("El rendimiento o eficiencia es:"+calculos.rendimiento());
-        System.out.println("La redundancia es:"+calculos.redundancia());
-
-        System.out.println(Lectura.getInstance().getCodigo().toString());
-        huffman.creaTablaHuffman();
-        EscribeArchivos.getInstance().creaArch(7);
+//        System.out.println("---------------------------- 5 caracteres ------------------------------------------------");
+//        lectura.separaTexto(5);
+//        calculos.calculaCantInfo();
+//        System.out.println("Longitud Media: "+calculos.longitudMedia());
+//
+//        calculos.isCompacto();
+//        calculos.KraftMcMillan();
+//        System.out.println("El rendimiento o eficiencia es:"+calculos.rendimiento());
+//        System.out.println("La redundancia es:"+calculos.redundancia());
+//
+//        System.out.println(Lectura.getInstance().getCodigo().toString());
+//        huffman.creaTablaHuffman();
+//        EscribeArchivos.getInstance().creaArch(5);
+//
+//
+//
+//        lectura.getTablaHuffman().clear();
+//        //Segunda Parte
+//        System.out.println("---------------------------- 7 caracteres ------------------------------------------------");
+//        lectura.separaTexto(7);
+//        calculos.calculaCantInfo();
+//        System.out.println("Longitud Media: "+calculos.longitudMedia());
+//
+//        calculos.isCompacto();
+//        calculos.KraftMcMillan();
+//        System.out.println("El rendimiento o eficiencia es:"+calculos.rendimiento());
+//        System.out.println("La redundancia es:"+calculos.redundancia());
+//
+//        System.out.println(Lectura.getInstance().getCodigo().toString());
+//        huffman.creaTablaHuffman();
+//        EscribeArchivos.getInstance().creaArch(7);
     }
 }

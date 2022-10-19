@@ -12,7 +12,7 @@ public class Register implements Comparable{
         this.frec = frec;
     }
 
-    public String getMensaje() {
+    public String getSimbolo() {
         return simbolo;
     }
 

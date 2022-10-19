@@ -18,7 +18,7 @@ public class Lectura {
 
     public ArrayList<String> indice = new ArrayList<String>();
     //public Map <String, Register> codigo = new HashMap<String, Register>();
-    public Map <String, Register> codigo = new TreeMap<String, Register>();
+    public Map <String, Register> codigo = new HashMap<String, Register>();
 
     public Map <String, String> tablaHuffman = new HashMap<String, String>();
     public int cantSimbolos;
@@ -155,6 +155,7 @@ public class Lectura {
 
         //File doc = new File("InformationTheoryTP1/src/assets/datos.txt");
         File doc = new File("src/assets/datos.txt");
+        //File doc = new File("src/assets/datosotros.txt");
         String mensaje="", str,simbolo;
         int frec = 0;
         int j=0;

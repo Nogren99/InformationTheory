@@ -2,85 +2,64 @@ package modelo;
 
 import java.util.*;
 
-class Node {
-    int data;
-    String c;
-    Node left;
-    Node right;
+class Nodo {
+    int frec;
+    String simbolo;
+    Nodo izq;
+    Nodo der;
 }
 
-class compare implements Comparator<Node> {
-    public int compare(Node a, Node b) {
-        return a.data - b.data;
+class compare implements Comparator<Nodo> {
+    public int compare(Nodo a, Nodo b) {
+        return a.frec - b.frec;
     }
 }
 
 public class Huffman {
 
-    public void muestraCodHuffman(Node root, String s) {
+    public void cargaTabla(Nodo raiz, String s) {
 
-//Identifying a root node
-        //if (root.left == null && root.right == null && Character.isLetter(root.c)) {
-        if (root.left == null && root.right == null ) {
-            //EscribeArchivos.getInstance().escribe(root.c + ":" + s + " frec: "+ root.data);
-           // System.out.println(root.c + ":" + s + " frec: "+ root.data);
-            Lectura.getInstance().getTablaHuffman().put(root.c,s);
+        if (raiz.izq == null && raiz.der == null ) {
+            System.out.println(raiz.simbolo + ":" + s + " frec: "+ raiz.frec);
+            Lectura.getInstance().getTablaHuffman().put(raiz.simbolo,s);
             return;
         }
-//Every time we turn left we add a zero to the code representation
-        muestraCodHuffman(root.left, s + "0");
-//Every time we turn right we add a one to the code representation
-        muestraCodHuffman(root.right, s + "1");
+//Cada vez que va a la izquierda agrega un 0 al codigo
+        cargaTabla(raiz.izq, s + "0");
+//Cada vez que va a la derecha agrega un 1 al codigo
+        cargaTabla(raiz.der, s + "1");
     }
 
-    public void creaTablaHuffman() {
+    public void creaArbolHuffman() {
 
         int n = Lectura.getInstance().getCantSimbolos();
         Map <String, Register> codigo = Lectura.getInstance().getCodigo();
         ArrayList<String> indice = Lectura.getInstance().getIndice();
 
-        // Putting our data in min-priority queue
-        PriorityQueue<Node> q = new PriorityQueue<Node>(n, new compare());
+        PriorityQueue<Nodo> cola = new PriorityQueue<Nodo>(n, new compare());
         for (int i = 0; i < n; i++) {
-            Node s = new Node();
-            //s.c = message[i];
-            s.c = codigo.get(indice.get(i)).getMensaje();
-            //s.data = frequen[i];
-            s.data = codigo.get(indice.get(i)).getFrec();
-            s.left = null;
-            s.right = null;
-            q.add(s);
+            Nodo nodo = new Nodo();
+            nodo.simbolo = codigo.get(indice.get(i)).getSimbolo();
+            nodo.frec = codigo.get(indice.get(i)).getFrec();
+            nodo.izq = null;
+            nodo.der = null;
+            cola.add(nodo);
         }
-        Node root = null;
-        // Extracting the sorted nodes from the queue
-        // Emptying until all we have is the root node
-        while (q.size() > 1) {
-            // Right for our root
-            Node rht = q.poll();
-            // Left for our root
-            Node lft = q.poll();
-            //System.out.println("Right " +rht.c);
-            //System.out.println(lft.c);
-            Node temp = new Node();
-            // Root will have the sum of data from both left and right
-            temp.data = rht.data + lft.data;
-            //temp.c = '-';
-            temp.c = "-";
-            temp.left = lft;
-            temp.right = rht;
-            root = temp;
-            // Adding this to the queue to build up higher levels of the tree
-            q.add(temp);
-        }
-        //EscribeArchivos.getInstance().preparaEscritura();
-        muestraCodHuffman(root, "");
-        //EscribeArchivos.getInstance().finalizaEscritura();
-    }
-    /*1. Cree un nodo de hoja para cada personaje y agréguelo a la cola de prioridad.
-    2. Mientras haya más de un nodo en la queue:
+        Nodo raiz = null;
 
-        Quite los dos nodos de la prioridad más alta (la frecuencia más baja) de la queue.
-        Cree un nuevo nodo interno con estos dos nodos como hijos y una frecuencia igual a la suma de las frecuencias de ambos nodos.
-        Agregue el nuevo nodo a la cola de prioridad.
-     3. El nodo restante es el nodo raíz y el árbol está completo.*/
+        while (cola.size() > 1) {
+
+            Nodo der = cola.poll();
+            Nodo izq = cola.poll();
+            Nodo temp = new Nodo();
+
+            temp.frec = der.frec + izq.frec;
+            temp.simbolo = "-";
+            temp.izq = izq;
+            temp.der = der;
+            raiz = temp;
+            cola.add(temp);
+        }
+        cargaTabla(raiz, "");
+    }
 }

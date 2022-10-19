@@ -56,6 +56,7 @@ public class EscribeArchivos {
             //ruta = System.getProperty("user.dir");
             /////////////////////////////
             File archivoLectura = new File("src/assets/datos.txt");
+            //File archivoLectura = new File("src/assets/datosotros.txt");
             fr= new FileReader(archivoLectura);
             BufferedReader br = new BufferedReader(fr, largoPalabra);
             /////////////////////////////
