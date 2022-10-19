@@ -49,41 +49,34 @@ public class EscribeArchivos {
 //    }
 
     public void creaArch(int largoPalabra) {
-        FileReader fr=null;
-        PrintWriter pw = null;
+        FileReader fileReader=null;
+        PrintWriter printWriter = null;
         try {
-            String ruta;
-            //ruta = System.getProperty("user.dir");
-            /////////////////////////////
+
             File archivoLectura = new File("src/assets/datos.txt");
-            //File archivoLectura = new File("src/assets/datosotros.txt");
-            fr= new FileReader(archivoLectura);
-            BufferedReader br = new BufferedReader(fr, largoPalabra);
-            /////////////////////////////
-            //FileWriter archivoSalida= new FileWriter(ruta+"/archCodificado"+String.valueOf(largoPalabra)+".txt");
+
+            fileReader= new FileReader(archivoLectura);
+            BufferedReader bufferedReader = new BufferedReader(fileReader, largoPalabra);
             FileWriter archivoSalida= new FileWriter("src/assets/arch"+nro+".txt");
             nro = nro + 2;
-            pw= new PrintWriter(archivoSalida);
-            ////////////////////////////////////////////////
-            String lineaStr, lineaBinaria;
-            char[] linea = new char[largoPalabra];
-            while ((br.read(linea, 0,largoPalabra)) != -1){
-                lineaBinaria=String.valueOf(linea);
-                //pw.print(tabla.get(lineaBinaria));
-                pw.print(Lectura.getInstance().getTablaHuffman().get(lineaBinaria)+"\n");
+            printWriter= new PrintWriter(archivoSalida);
+            String str;
+            char[] cad = new char[largoPalabra];
+            while ((bufferedReader.read(cad, 0,largoPalabra)) != -1){
+                str=String.valueOf(cad);
+                printWriter.print(Lectura.getInstance().getTablaHuffman().get(str)+"\n");
             }
-
         }catch (Exception e){
             e.printStackTrace();
         }finally {
             try {
-                if (null != fr)
-                    fr.close();
+                if (null != fileReader)
+                    fileReader.close();
             } catch (Exception e2) {
                 e2.printStackTrace();
             }try{
-                if(pw!=null)
-                    pw.close();
+                if(printWriter!=null)
+                    printWriter.close();
             }catch (Exception e3) {
                 e3.printStackTrace();
             }
