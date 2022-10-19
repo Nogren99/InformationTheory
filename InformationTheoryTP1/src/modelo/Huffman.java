@@ -2,11 +2,9 @@ package modelo;
 
 import java.util.*;
 
-//Node will represent all the letters with their frequency
 class Node {
     int data;
     String c;
-    //char c;
     Node left;
     Node right;
 }
@@ -24,8 +22,9 @@ public class Huffman {
 //Identifying a root node
         //if (root.left == null && root.right == null && Character.isLetter(root.c)) {
         if (root.left == null && root.right == null ) {
-            EscribeArchivos.getInstance().escribe(root.c + ":" + s + " frec: "+ root.data);
-            //System.out.println(root.c + ":" + s + " frec: "+ root.data);
+            //EscribeArchivos.getInstance().escribe(root.c + ":" + s + " frec: "+ root.data);
+            System.out.println(root.c + ":" + s + " frec: "+ root.data);
+            Lectura.getInstance().getTablaHuffman().put(root.c,s);
             return;
         }
 //Every time we turn left we add a zero to the code representation
@@ -34,7 +33,7 @@ public class Huffman {
         muestraCodHuffman(root.right, s + "1");
     }
 
-    public void creaCodHuffman() {
+    public void creaTablaHuffman() {
 
         int n = Lectura.getInstance().getN();
         Map <String, Register> codigo = Lectura.getInstance().getCodigo();
@@ -73,9 +72,9 @@ public class Huffman {
             // Adding this to the queue to build up higher levels of the tree
             q.add(temp);
         }
-        EscribeArchivos.getInstance().preparaEscritura();
+        //EscribeArchivos.getInstance().preparaEscritura();
         muestraCodHuffman(root, "");
-        EscribeArchivos.getInstance().finalizaEscritura();
+        //EscribeArchivos.getInstance().finalizaEscritura();
     }
     /*1. Cree un nodo de hoja para cada personaje y agréguelo a la cola de prioridad.
     2. Mientras haya más de un nodo en la queue:

@@ -19,6 +19,8 @@ public class Lectura {
     public ArrayList<String> indice = new ArrayList<String>();
     //public Map <String, Register> codigo = new HashMap<String, Register>();
     public Map <String, Register> codigo = new TreeMap<String, Register>();
+
+    public Map <String, String> tablaHuffman = new HashMap<String, String>();
     public int n;
 
     public void setN(int n) {
@@ -45,6 +47,10 @@ public class Lectura {
 
     public ArrayList<String> getIndice() {
         return indice;
+    }
+
+    public Map<String, String> getTablaHuffman() {
+        return tablaHuffman;
     }
 
     public static Lectura getInstance() {
