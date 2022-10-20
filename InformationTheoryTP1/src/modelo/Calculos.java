@@ -26,18 +26,12 @@ public class Calculos {
                 totalColumnas[i] += mat[j][i];
             }
         }
-        /*
-        for(int i=0;i<3;i++){
-            System.out.println(totalColumnas[i]);
-        }
-        */
+
         for(int i=0;i<3;i++) {
             for (int j = 0; j < 3; j++) {
                 this.matProbabilidades[i][j] = (float)mat[i][j]/totalColumnas[j];
             }
         }
-
-
     }
 
     public void muestraMatriz(){

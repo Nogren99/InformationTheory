@@ -16,37 +16,6 @@ public class EscribeArchivos {
             instance = new EscribeArchivos();
         return instance;
     }
-//    public void preparaEscritura(){
-//        this.doc = new File("src/assets/arch"+nro+".txt");
-//        nro = nro + 2;
-//        try {
-//            this.bw = new BufferedWriter(new FileWriter(doc));
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
-//    public void escribe(String cadena){
-//
-////        this.doc = new File("src/assets/arch"+nro+".txt");
-////        try {
-////            this.bw = new BufferedWriter(new FileWriter(doc));
-////        } catch (IOException e) {
-////            throw new RuntimeException(e);
-////        }
-//        try {
-//            this.bw.write(cadena+"\n");
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
-//
-//    public void finalizaEscritura(){
-//        try {
-//            this.bw.close();
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
 
     public void creaArch(int largoPalabra) {
         FileReader fileReader=null;
@@ -84,6 +53,5 @@ public class EscribeArchivos {
             System.out.println("archivo creado");
         }
     }
-
 
 }

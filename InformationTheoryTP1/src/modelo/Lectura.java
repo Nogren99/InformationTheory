@@ -11,15 +11,8 @@ public class Lectura {
     private static Lectura instance = null;
     public Map <Character, Integer> alfabeto = new HashMap<Character, Integer>();
     public double vecProb[] = new double[27];
-
-    //public String vec[];
-
-    //public ArrayList<Register> array = new ArrayList<Register>();
-
     public ArrayList<String> indice = new ArrayList<String>();
-    //public Map <String, Register> codigo = new HashMap<String, Register>();
     public Map <String, Register> codigo = new HashMap<String, Register>();
-
     public Map <String, String> tablaHuffman = new HashMap<String, String>();
     public int cantSimbolos;
     public int cantCaracteres;
@@ -107,7 +100,6 @@ public class Lectura {
             System.out.print(aux+" |");
             aux++;
             for(int j=0;j<3;j++){
-                //System.out.print(" "+matriz[i][j]+" | ");
                 System.out.printf("%04d | ",matriz[i][j]);
             }
             System.out.println();
@@ -122,7 +114,6 @@ public class Lectura {
             System.out.print(aux+" |");
             aux++;
             for(int j=0;j<3;j++){
-                //System.out.print(" "+matriz[i][j]+" | ");
                 System.out.printf("%f | ",matriz[i][j]);
             }
             System.out.println();
@@ -158,7 +149,6 @@ public class Lectura {
         String mensaje="", str,simbolo;
         int frec = 0;
         int j=0;
-        //this.vec = new String[];
         Register actual;
         this.indice.clear();
         this.codigo.clear();

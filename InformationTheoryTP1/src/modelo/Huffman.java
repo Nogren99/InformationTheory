@@ -23,9 +23,9 @@ public class Huffman {
             Lectura.getInstance().getTablaHuffman().put(raiz.simbolo,s);
             return;
         }
-//Cada vez que va a la izquierda agrega un 0 al codigo
+        //Cada vez que va a la izquierda agrega un 0 al codigo
         cargaTabla(raiz.izq, s + "0");
-//Cada vez que va a la derecha agrega un 1 al codigo
+        //Cada vez que va a la derecha agrega un 1 al codigo
         cargaTabla(raiz.der, s + "1");
     }
 
