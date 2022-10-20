@@ -20,7 +20,6 @@ public class Huffman {
     public void cargaTabla(Nodo raiz, String s) {
 
         if (raiz.izq == null && raiz.der == null ) {
-            System.out.println(raiz.simbolo + ":" + s + " frec: "+ raiz.frec);
             Lectura.getInstance().getTablaHuffman().put(raiz.simbolo,s);
             return;
         }

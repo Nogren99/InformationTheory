@@ -51,13 +51,14 @@ public class EscribeArchivos {
     public void creaArch(int largoPalabra) {
         FileReader fileReader=null;
         PrintWriter printWriter = null;
-        try {
 
-            File archivoLectura = new File("E:\\Programas\\Github\\InformationTheory\\InformationTheoryTP1\\src\\assets\\datos.txt");
+
+        try {
+            File archivoLectura = new File("src/assets/datos.txt");
 
             fileReader= new FileReader(archivoLectura);
             BufferedReader bufferedReader = new BufferedReader(fileReader, largoPalabra);
-            FileWriter archivoSalida= new FileWriter("E:\\Programas\\Github\\InformationTheory\\InformationTheoryTP1\\src\\assets\\"+nro+".txt");
+            FileWriter archivoSalida= new FileWriter("src/assets/arch"+nro+".txt");
             nro = nro + 2;
             printWriter= new PrintWriter(archivoSalida);
             String str;

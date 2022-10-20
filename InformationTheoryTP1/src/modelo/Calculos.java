@@ -185,31 +185,6 @@ public class Calculos {
         return longMedia;
     }
 
-    public void isCompacto(){
-
-        Map <String, Register> codigo = Lectura.getInstance().getCodigo();
-        ArrayList<String> indice = Lectura.getInstance().getIndice();
-        int i=0;
-        int cantSimbolos = Lectura.getInstance().getCantSimbolos();
-        int cantCaracteres = Lectura.getInstance().getCantCaracteres();
-
-        int r = Lectura.getInstance().alfabeto.size();
-        boolean compacto = true;
-
-        double probabilidad, logTemp=0;
-
-        while (compacto == true && i<cantSimbolos){
-            probabilidad = codigo.get(indice.get(i)).getProb();
-            logTemp = Math.log10(1/probabilidad)/Math.log10(r);
-            if (logTemp != cantCaracteres)
-                compacto = false;
-            i++;
-        }
-        if (compacto == true)
-            System.out.println("El codigo con simbolos de "+cantCaracteres+" caracteres es compacto");
-        else
-            System.out.println("El codigo con simbolos de "+cantCaracteres+" caracteres NO es compacto");
-    }
 
     public void KraftMcMillan (){
         Map <String, Register> codigo = Lectura.getInstance().getCodigo();

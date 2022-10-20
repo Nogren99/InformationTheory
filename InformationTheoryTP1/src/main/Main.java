@@ -35,12 +35,10 @@ public class Main {
         calculos.calculaCantInfo();
         System.out.println("Longitud Media: "+calculos.longitudMedia());
 
-        calculos.isCompacto();
         calculos.KraftMcMillan();
         System.out.println("El rendimiento o eficiencia es:"+calculos.rendimiento());
         System.out.println("La redundancia es:"+calculos.redundancia());
 
-        System.out.println(Lectura.getInstance().getCodigo().toString());
         huffman.creaArbolHuffman();
         EscribeArchivos.getInstance().creaArch(3);
 
@@ -52,12 +50,10 @@ public class Main {
         calculos.calculaCantInfo();
         System.out.println("Longitud Media: "+calculos.longitudMedia());
 
-        calculos.isCompacto();
         calculos.KraftMcMillan();
         System.out.println("El rendimiento o eficiencia es:"+calculos.rendimiento());
         System.out.println("La redundancia es:"+calculos.redundancia());
 
-        System.out.println(Lectura.getInstance().getCodigo().toString());
         huffman.creaArbolHuffman();
         EscribeArchivos.getInstance().creaArch(5);
 
@@ -70,12 +66,10 @@ public class Main {
         calculos.calculaCantInfo();
         System.out.println("Longitud Media: "+calculos.longitudMedia());
 
-        calculos.isCompacto();
         calculos.KraftMcMillan();
         System.out.println("El rendimiento o eficiencia es:"+calculos.rendimiento());
         System.out.println("La redundancia es:"+calculos.redundancia());
 
-        System.out.println(Lectura.getInstance().getCodigo().toString());
         huffman.creaArbolHuffman();
         EscribeArchivos.getInstance().creaArch(7);
 

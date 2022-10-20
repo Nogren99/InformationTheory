@@ -80,8 +80,8 @@ public class Lectura {
         int i=0, j=-1;
 
         try {
-            //fr = new FileReader("InformationTheoryTP1/src/assets/datos.txt");
-            fr = new FileReader("E:\\Programas\\Github\\InformationTheory\\InformationTheoryTP1\\src\\assets\\datos.txt");
+            fr = new FileReader("src/assets/datos.txt");
+            //fr = new FileReader("E:\\Programas\\Github\\InformationTheory\\InformationTheoryTP1\\src\\assets\\datos.txt");
             c1 = (char) fr.read();
             c2 = (char) fr.read();
 
@@ -135,8 +135,8 @@ public class Lectura {
         char c;
         int i=0;
         try {
-            //fr = new FileReader("InformationTheoryTP1/src/assets/datos.txt");
-            fr = new FileReader("E:\\Programas\\Github\\InformationTheory\\InformationTheoryTP1\\src\\assets\\datos.txt");
+            fr = new FileReader("src/assets/datos.txt");
+            //fr = new FileReader("E:\\Programas\\Github\\InformationTheory\\InformationTheoryTP1\\src\\assets\\datos.txt");
             while(i<9999) {
                 c = (char) fr.read();
                 this.vecProb[alfabeto.get(c)]++;
@@ -153,8 +153,8 @@ public class Lectura {
 
     public void separaTexto (int n){
 
-        //File doc = new File("InformationTheoryTP1/src/assets/datos.txt");
-        File doc = new File("E:\\Programas\\Github\\InformationTheory\\InformationTheoryTP1\\src\\assets\\datos.txt");
+        File doc = new File("src/assets/datos.txt");
+        //File doc = new File("E:\\Programas\\Github\\InformationTheory\\InformationTheoryTP1\\src\\assets\\datos.txt");
         String mensaje="", str,simbolo;
         int frec = 0;
         int j=0;
