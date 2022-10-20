@@ -53,11 +53,11 @@ public class EscribeArchivos {
         PrintWriter printWriter = null;
         try {
 
-            File archivoLectura = new File("src/assets/datos.txt");
+            File archivoLectura = new File("E:\\Programas\\Github\\InformationTheory\\InformationTheoryTP1\\src\\assets\\datos.txt");
 
             fileReader= new FileReader(archivoLectura);
             BufferedReader bufferedReader = new BufferedReader(fileReader, largoPalabra);
-            FileWriter archivoSalida= new FileWriter("src/assets/arch"+nro+".txt");
+            FileWriter archivoSalida= new FileWriter("E:\\Programas\\Github\\InformationTheory\\InformationTheoryTP1\\src\\assets\\"+nro+".txt");
             nro = nro + 2;
             printWriter= new PrintWriter(archivoSalida);
             String str;
