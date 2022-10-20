@@ -7,8 +7,7 @@ import modelo.Huffman;
 import modelo.Lectura;
 
 public class Main {
-
-
+    
     public static void main(String [] args) throws noSePudoLeerException {
 
         Lectura lectura = Lectura.getInstance();
